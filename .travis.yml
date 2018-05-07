@@ -62,16 +62,17 @@ before_deploy:
 
 - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk AnchitTravisExample.apk"
 
+
 deploy:
 
-  provider: releases
+  provider: pages
 
   file: AnchitTravisExample.apk
   skip_cleanup: true
 
   on:
 
-    repo: AnchitAndroidWorld/travis-testing
+    branch: master
 
     tags: true
 
