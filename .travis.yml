@@ -47,10 +47,36 @@ android:
 script:
 - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
-#deploy:
-#  provider: pages
-#  skip-cleanup: true
-#  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-#  keep-history: true
-#  on:
-#    branch: master
+before_deploy:
+
+- cp $TRAVIS_BUILD_DIR/Keystore.jks $HOME
+
+- cd app/build/outputs/apk/
+
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/Keystore.jks -storepass admin123 -keypass admin123 app-release-unsigned.apk travis
+
+
+# Verification
+
+- jarsigner -verify app-release-unsigned.apk
+
+- "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk AnchitTravisExample.apk"
+
+deploy:
+
+  provider: releases
+
+  file: AnchitTravisExample.apk
+  skip_cleanup: true
+
+  on:
+
+    repo: AnchitAndroidWorld/travis-testing
+
+    tags: true
+
+    jdk: oraclejdk8
+
+  api_key:
+
+    secure: "b95a7d774ec5457e212060d145f1e3b22936ac7b"
