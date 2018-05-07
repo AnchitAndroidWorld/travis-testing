@@ -65,19 +65,12 @@ before_deploy:
 
 deploy:
 
-  provider: pages
+  provider: HOME
 
   file: AnchitTravisExample.apk
   skip_cleanup: true
-
+  github-token: $GITHUB_TOKEN
+  keep-history: true
   on:
 
     branch: master
-
-    tags: true
-
-    jdk: oraclejdk8
-
-  api_key:
-
-    secure: "ec442Jm9TxDjhP6fQz57zA"
