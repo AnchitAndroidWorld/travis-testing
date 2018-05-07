@@ -41,7 +41,7 @@ android:
 
  - android-$ANDROID_API
 
- - android-$EMULATOR_API_LEVEL
+ - android-$EMULATOR_API
 
  - extra-google-m2repository
 
