@@ -1,38 +1,39 @@
-
 language: android
-
 sudo: required
-
 jdk: oraclejdk8
 
 before_cache:
-  -rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 
-  -rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+ - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
-  directories:
-   -$HOME/.gradle/caches/
 
-   -$HOME/.gradle/wrapper/
+ directories:
 
-  env:
-   global:
+ - $HOME/.gradle/caches/
 
-   - ANDROID_API=27
+ - $HOME/.gradle/wrapper/
 
-   - EMULATOR_API=27
+env:
 
-   - ANDROID_BUILD_TOOLS=27.0.3
+ global:
 
-   - ADB_INSTALL_TIMEOUT=5 # minutes
+ - ANDROID_API=27
 
-     secure: "VOYgt23/BXvUu/3vBdbQHxjMX0b1Gyjx6RawiY6E26FpR5ghWLzlNIbSQVlsg8OXOFU8T/iJe6fISLC/CEpm+v97rmLd8R/iackKOJRI0RiZqAaOOfb2GfdZsQYehKgz0tEglMbmq9fuuqIxh/rJAAGDs7X1b+oT54Cg51+Czjm9ypxTdc0bZNBKiTsQLGkcBMMl8FPMfb68BWEMCgvAWDamWIN0fd0zHepMWFZZg99/5GQn39ixxoNDBHF/7lt25KyCrnuJWFtIAjbv5BydZazjiXfVTq/84J86LOb2VcMcm4rQJxvMioURFdM7uZgqNsdXocZO8QmwQT9cSQfCsoWab5HKSCurjDbNc0JKu+92ZF9eoEsRcommInZJO4sD6amXoza54CZApBtcdjUDHv0pzLZDjqjc+rJXn3VZwHqhPgfJNr4ee+Dr+6wzSO2ybPq65KSA5pQKzXx6mAOkikAF+mgOfQpuAYQ+1zM+I06B90z2oCzRQGk5h7XO6jsSpeoOiVwzDTQZfGruOHCoAnNK+BebL9xhET6bDkf2hr0QUiwk5lEIbn2MzK7gssmYtgVkPYaY2rF0LlSZ74iz9MtOpTB81gQfXIjJvD64m80c+zKzGj6/b0ZYDsWclnLaF/HuZBcQOIuiYATaOBPRynQlO6kO94WOTCb2BkmAiLQ="
+ - EMULATOR_API=27
 
-     secure: "ZfVziwme+QdnoS1K4KuVuXtL6Nz6SPrRkGEVRO1cEXHqVt8Sj70YQZA/Xa3cOrNpTrvlzh3PjoXxYWRilWVMfEmi0NKxk53ERXYhRqirY+o2lTMXBmw50jvUakirvhZAS1xhmyN4IoipQw45ATitrJsD54dIi/ZvnPfLd1EqV2Jvh+QfoUNgaAD+kfGc2oIb6RCTTK4ukZQfoqli1ymtPADFzFBX2KgVZ7OwAe+oVMjjJNQO06Fo++92vNjZjqT75S8FcTeVZanvkbowzNEkbjU82yuJ7+b2buH+72dqjmqty6oHGhCsTpuHm6/mZjVfYJkuMFnlYo5Ym4D5XLT2BHAqT2eWoYvF/YY8llRfktHbGyYylpRYz/DxM6Gfl1TQMO5c2gdzJiA4LMaszc1wWP0y/4KrJO+zOqjoZ4xPUd0ww2pHOac4VfJbu1MD7fF0snKM5YW6mWRM1ppx9rpmvKn5WKs9b1gj3DUvtvXYibINM94I3FtH+B7XtKAKFXu5xq2R+c2otBMnFhpoZyQGyUyumNmHTv93ZggcelsqXTzXA3B1b2z0yiy3/gO5HzgGpYsnC7cHj0AlM6T7YrJFf1IhND6XWsaCC1wTFQS1a7gN/+I9rEzOo0M4LiLXN1ErX2b4tK6fJaGoPWvJxc/34umujkPIC1jqzL/uiwAo5e0="
+ - ANDROID_BUILD_TOOLS=27.0.3
+
+ - ADB_INSTALL_TIMEOUT=5 # minutes
+ - secure: "VOYgt23/BXvUu/3vBdbQHxjMX0b1Gyjx6RawiY6E26FpR5ghWLzlNIbSQVlsg8OXOFU8T/iJe6fISLC/CEpm+v97rmLd8R/iackKOJRI0RiZqAaOOfb2GfdZsQYehKgz0tEglMbmq9fuuqIxh/rJAAGDs7X1b+oT54Cg51+Czjm9ypxTdc0bZNBKiTsQLGkcBMMl8FPMfb68BWEMCgvAWDamWIN0fd0zHepMWFZZg99/5GQn39ixxoNDBHF/7lt25KyCrnuJWFtIAjbv5BydZazjiXfVTq/84J86LOb2VcMcm4rQJxvMioURFdM7uZgqNsdXocZO8QmwQT9cSQfCsoWab5HKSCurjDbNc0JKu+92ZF9eoEsRcommInZJO4sD6amXoza54CZApBtcdjUDHv0pzLZDjqjc+rJXn3VZwHqhPgfJNr4ee+Dr+6wzSO2ybPq65KSA5pQKzXx6mAOkikAF+mgOfQpuAYQ+1zM+I06B90z2oCzRQGk5h7XO6jsSpeoOiVwzDTQZfGruOHCoAnNK+BebL9xhET6bDkf2hr0QUiwk5lEIbn2MzK7gssmYtgVkPYaY2rF0LlSZ74iz9MtOpTB81gQfXIjJvD64m80c+zKzGj6/b0ZYDsWclnLaF/HuZBcQOIuiYATaOBPRynQlO6kO94WOTCb2BkmAiLQ="
+ - secure: "ZfVziwme+QdnoS1K4KuVuXtL6Nz6SPrRkGEVRO1cEXHqVt8Sj70YQZA/Xa3cOrNpTrvlzh3PjoXxYWRilWVMfEmi0NKxk53ERXYhRqirY+o2lTMXBmw50jvUakirvhZAS1xhmyN4IoipQw45ATitrJsD54dIi/ZvnPfLd1EqV2Jvh+QfoUNgaAD+kfGc2oIb6RCTTK4ukZQfoqli1ymtPADFzFBX2KgVZ7OwAe+oVMjjJNQO06Fo++92vNjZjqT75S8FcTeVZanvkbowzNEkbjU82yuJ7+b2buH+72dqjmqty6oHGhCsTpuHm6/mZjVfYJkuMFnlYo5Ym4D5XLT2BHAqT2eWoYvF/YY8llRfktHbGyYylpRYz/DxM6Gfl1TQMO5c2gdzJiA4LMaszc1wWP0y/4KrJO+zOqjoZ4xPUd0ww2pHOac4VfJbu1MD7fF0snKM5YW6mWRM1ppx9rpmvKn5WKs9b1gj3DUvtvXYibINM94I3FtH+B7XtKAKFXu5xq2R+c2otBMnFhpoZyQGyUyumNmHTv93ZggcelsqXTzXA3B1b2z0yiy3/gO5HzgGpYsnC7cHj0AlM6T7YrJFf1IhND6XWsaCC1wTFQS1a7gN/+I9rEzOo0M4LiLXN1ErX2b4tK6fJaGoPWvJxc/34umujkPIC1jqzL/uiwAo5e0="
 
 android:
+
  components:
+
  - tools
 
  - platform-tools
@@ -61,7 +62,7 @@ android:
  - google-gdk-license-.+
 
 
- before_install:
+before_install:
 
  - openssl aes-256-cbc -K $encrypted_c0801aa05af4_key -iv $encrypted_c0801aa05af4_iv -in KeyStore.jks.enc -out KeyStore.jks -d
 
@@ -76,7 +77,7 @@ android:
  - ./gradlew dependencies || true
 
 
- before_script:
+before_script:
 
  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
 
@@ -87,11 +88,11 @@ android:
  - adb shell input keyevent 82 &
 
 
- script:
+script:
 
  - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
- before_deploy:
+before_deploy:
 
  - cp $TRAVIS_BUILD_DIR/Keystore.jks $HOME
 
@@ -106,24 +107,25 @@ android:
  - "${ANDROID_HOME}/build-tools/27.0.3/zipalign -v 4 app-release.apk AnchitTravisExample.apk"
 
 
- deploy:
+deploy:
 
-  provider: releases
+ provider: releases
 
-   file: AnchitTravisExample.apk
+ file: AnchitTravisExample.apk
 
-   skip_cleanup: true
+ skip_cleanup: true
 
-   github-token: $GITHUB_TOKEN
+ github-token: $GITHUB_TOKEN
 
-   keep-history: true
+ keep-history: true
 
+ on:
    repo: AnchitAndroidWorld/travis-testing
 
-      tags: true
+   tags: true
 
-      jdk: oraclejdk8
+   jdk: oraclejdk8
 
-      api_key:
+ api_key:
 
-      secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
+  secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
