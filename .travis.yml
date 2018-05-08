@@ -125,7 +125,7 @@ before_deploy:
 
 deploy:
 
- provider: releases
+ provider: pages
 
  file: AnchitTravisExample.apk
 
