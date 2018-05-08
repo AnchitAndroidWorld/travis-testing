@@ -1,157 +1,168 @@
-language: android
-sudo: required
-jdk: oraclejdk8
-notifications:
- email:
-  - anchit.makkar849@webkul.com
-
-before_cache:
-
- - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
- - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-
-cache:
-
- directories:
-
- - $HOME/.gradle/caches/
-
- - $HOME/.gradle/wrapper/
-
- - $HOME/.android/build-cache
-
-env:
-
- global:
-
- - ANDROID_API=26
-
- - EMULATOR_API=22
-
- - ANDROID_BUILD_TOOLS=26.0.2
-
- - ANDROID_EMU_API_LEVEL=22
-
- - ANDROID_ABI=armeabi-v7a
-
- - ADB_INSTALL_TIMEOUT=5 # minutes
- - secure: "VOYgt23/BXvUu/3vBdbQHxjMX0b1Gyjx6RawiY6E26FpR5ghWLzlNIbSQVlsg8OXOFU8T/iJe6fISLC/CEpm+v97rmLd8R/iackKOJRI0RiZqAaOOfb2GfdZsQYehKgz0tEglMbmq9fuuqIxh/rJAAGDs7X1b+oT54Cg51+Czjm9ypxTdc0bZNBKiTsQLGkcBMMl8FPMfb68BWEMCgvAWDamWIN0fd0zHepMWFZZg99/5GQn39ixxoNDBHF/7lt25KyCrnuJWFtIAjbv5BydZazjiXfVTq/84J86LOb2VcMcm4rQJxvMioURFdM7uZgqNsdXocZO8QmwQT9cSQfCsoWab5HKSCurjDbNc0JKu+92ZF9eoEsRcommInZJO4sD6amXoza54CZApBtcdjUDHv0pzLZDjqjc+rJXn3VZwHqhPgfJNr4ee+Dr+6wzSO2ybPq65KSA5pQKzXx6mAOkikAF+mgOfQpuAYQ+1zM+I06B90z2oCzRQGk5h7XO6jsSpeoOiVwzDTQZfGruOHCoAnNK+BebL9xhET6bDkf2hr0QUiwk5lEIbn2MzK7gssmYtgVkPYaY2rF0LlSZ74iz9MtOpTB81gQfXIjJvD64m80c+zKzGj6/b0ZYDsWclnLaF/HuZBcQOIuiYATaOBPRynQlO6kO94WOTCb2BkmAiLQ="
- - secure: "ZfVziwme+QdnoS1K4KuVuXtL6Nz6SPrRkGEVRO1cEXHqVt8Sj70YQZA/Xa3cOrNpTrvlzh3PjoXxYWRilWVMfEmi0NKxk53ERXYhRqirY+o2lTMXBmw50jvUakirvhZAS1xhmyN4IoipQw45ATitrJsD54dIi/ZvnPfLd1EqV2Jvh+QfoUNgaAD+kfGc2oIb6RCTTK4ukZQfoqli1ymtPADFzFBX2KgVZ7OwAe+oVMjjJNQO06Fo++92vNjZjqT75S8FcTeVZanvkbowzNEkbjU82yuJ7+b2buH+72dqjmqty6oHGhCsTpuHm6/mZjVfYJkuMFnlYo5Ym4D5XLT2BHAqT2eWoYvF/YY8llRfktHbGyYylpRYz/DxM6Gfl1TQMO5c2gdzJiA4LMaszc1wWP0y/4KrJO+zOqjoZ4xPUd0ww2pHOac4VfJbu1MD7fF0snKM5YW6mWRM1ppx9rpmvKn5WKs9b1gj3DUvtvXYibINM94I3FtH+B7XtKAKFXu5xq2R+c2otBMnFhpoZyQGyUyumNmHTv93ZggcelsqXTzXA3B1b2z0yiy3/gO5HzgGpYsnC7cHj0AlM6T7YrJFf1IhND6XWsaCC1wTFQS1a7gN/+I9rEzOo0M4LiLXN1ErX2b4tK6fJaGoPWvJxc/34umujkPIC1jqzL/uiwAo5e0="
- - secure: "xgHYHsrdXwbd8aU9V/4gnsXb1GkGhG25+F+vRsA+YDa9ZT4jof282hAH+EddppyuXehjHRHTn/M4+qOc0ex5Pv/DM+kleEZmiAvVEGMF9rJOyQecfBy8R9DVbBeIHvYWK7BvLj9edNq8jiMu/Vfm4CZkbSDiFZ+LDvZR8N0b0a0zZz01CY43mTokQqqroK7cRdPlaTdDYKyaHwg0/ATkhewTZoJuYZFgdKwbwjePtIqV6kTkfYiDwvnYRfMrjrp15UYajZ70xA9tcYN+/se3sHOOjztgv04zbq8HMQL+0BRCgl4E4t6eq72gO0+yhvquO9Hm/WtvNtAERbvP4HLjNbKJbgTBrF1CV2iDMVyFUI+So8cKuapoGctJfOEt5nTfCT4Hqkm6HcmW8+UZOmtMCoZMS8mHqA7WKpLgltDrguWrvUcfDpGW5OxaOG4qlO0bZ7hV3DDTO+v42WxpWzADwnk4+s6jVDmSRyQMDtxv+C1nrLc6KSB+7LNsR+k1tJacUSSxKMnES6Gmcd0HGSPa1Tu4FAz9j1GLnI8hnbCG4UtGzOQbzpdOZDYtRvT9vTWesnm4X9vm7N+RaM3R+1RbnqHNyZ2Gg6a3Bgn/uzkCXqO+alqg/QIFI2qJ8ioF46mp8wOI2U6UMZ5QleT81skpcJEHq194DIiM6J1Q3jVaZ/I="
-
-
-android:
-
- components:
-
- - tools
- - tools
-
- - platform-tools
-
- - build-tools-$ANDROID_BUILD_TOOLS
-
- - android-$ANDROID_API
-
- - android-$EMULATOR_API
-
- - extra-google-m2repository
-
- - extra-android-m2repository # for design library
-
- - addon-google_apis-google-19 # google play services
-
-# - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
-
-# - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
-
- - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
-
- licenses:
- - android-sdk-preview-license-.+
-
- - android-sdk-license-.+
-
- - google-gdk-license-.+
-
-
-before_install:
-
-# - openssl aes-256-cbc -in KeyStore.jks.enc -out KeyStore.jks -d
-# - openssl aes-256-cbc -K $encrypted_c0801aa05af4_key -iv $encrypted_c0801aa05af4_iv -in KeyStore.jks.enc -out KeyStore.jks -d
-
- - mkdir "$ANDROID_HOME/licenses" || true
-
- - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-
- - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-
- - chmod +x gradlew
-
- - ./gradlew dependencies || true
-
-
-before_script:
- - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
-
-# - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
-
- - emulator -avd test -no-skin -no-audio -no-window &
-
- - android-wait-for-emulator
-
- - adb shell input keyevent 82 &
-
-
-install: gradle build
-#script: gradle check
-
-#script:
-# - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
-
-script: ./gradlew connectedAndroidTest
-
-before_deploy:
-
- - cp $TRAVIS_BUILD_DIR/Keystore.jks $HOME
-
- - cd app/build/outputs/apk/
-
- - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/keystore.jks -storepass $storepass -keypass $keypass app-release.apk KeyStore
-
-# Verification
-
- - jarsigner -verify app-release-unsigned.apk
-
- - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk AnchitTravisExample.apk"
-
-
-deploy:
-
- provider: pages
-
- file: AnchitTravisExample.apk
-
- skip_cleanup: true
-
- github-token: $GITHUB_TOKEN
-
- keep-history: true
-
- on:
-     branch: master
-
+#language: android
+#sudo: required
+#jdk: oraclejdk8
+#notifications:
+# email:
+#  - anchit.makkar849@webkul.com
+#
+#before_cache:
+#
+# - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+#
+# - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+#
+#cache:
+#
+# directories:
+#
+# - $HOME/.gradle/caches/
+#
+# - $HOME/.gradle/wrapper/
+#
+# - $HOME/.android/build-cache
+#
+#env:
+#
+# global:
+#
+# - ANDROID_API=26
+#
+# - EMULATOR_API=22
+#
+# - ANDROID_BUILD_TOOLS=26.0.2
+#
+# - ANDROID_EMU_API_LEVEL=22
+#
+# - ANDROID_ABI=armeabi-v7a
+#
+# - ADB_INSTALL_TIMEOUT=5 # minutes
+# - secure: "VOYgt23/BXvUu/3vBdbQHxjMX0b1Gyjx6RawiY6E26FpR5ghWLzlNIbSQVlsg8OXOFU8T/iJe6fISLC/CEpm+v97rmLd8R/iackKOJRI0RiZqAaOOfb2GfdZsQYehKgz0tEglMbmq9fuuqIxh/rJAAGDs7X1b+oT54Cg51+Czjm9ypxTdc0bZNBKiTsQLGkcBMMl8FPMfb68BWEMCgvAWDamWIN0fd0zHepMWFZZg99/5GQn39ixxoNDBHF/7lt25KyCrnuJWFtIAjbv5BydZazjiXfVTq/84J86LOb2VcMcm4rQJxvMioURFdM7uZgqNsdXocZO8QmwQT9cSQfCsoWab5HKSCurjDbNc0JKu+92ZF9eoEsRcommInZJO4sD6amXoza54CZApBtcdjUDHv0pzLZDjqjc+rJXn3VZwHqhPgfJNr4ee+Dr+6wzSO2ybPq65KSA5pQKzXx6mAOkikAF+mgOfQpuAYQ+1zM+I06B90z2oCzRQGk5h7XO6jsSpeoOiVwzDTQZfGruOHCoAnNK+BebL9xhET6bDkf2hr0QUiwk5lEIbn2MzK7gssmYtgVkPYaY2rF0LlSZ74iz9MtOpTB81gQfXIjJvD64m80c+zKzGj6/b0ZYDsWclnLaF/HuZBcQOIuiYATaOBPRynQlO6kO94WOTCb2BkmAiLQ="
+# - secure: "ZfVziwme+QdnoS1K4KuVuXtL6Nz6SPrRkGEVRO1cEXHqVt8Sj70YQZA/Xa3cOrNpTrvlzh3PjoXxYWRilWVMfEmi0NKxk53ERXYhRqirY+o2lTMXBmw50jvUakirvhZAS1xhmyN4IoipQw45ATitrJsD54dIi/ZvnPfLd1EqV2Jvh+QfoUNgaAD+kfGc2oIb6RCTTK4ukZQfoqli1ymtPADFzFBX2KgVZ7OwAe+oVMjjJNQO06Fo++92vNjZjqT75S8FcTeVZanvkbowzNEkbjU82yuJ7+b2buH+72dqjmqty6oHGhCsTpuHm6/mZjVfYJkuMFnlYo5Ym4D5XLT2BHAqT2eWoYvF/YY8llRfktHbGyYylpRYz/DxM6Gfl1TQMO5c2gdzJiA4LMaszc1wWP0y/4KrJO+zOqjoZ4xPUd0ww2pHOac4VfJbu1MD7fF0snKM5YW6mWRM1ppx9rpmvKn5WKs9b1gj3DUvtvXYibINM94I3FtH+B7XtKAKFXu5xq2R+c2otBMnFhpoZyQGyUyumNmHTv93ZggcelsqXTzXA3B1b2z0yiy3/gO5HzgGpYsnC7cHj0AlM6T7YrJFf1IhND6XWsaCC1wTFQS1a7gN/+I9rEzOo0M4LiLXN1ErX2b4tK6fJaGoPWvJxc/34umujkPIC1jqzL/uiwAo5e0="
+# - secure: "xgHYHsrdXwbd8aU9V/4gnsXb1GkGhG25+F+vRsA+YDa9ZT4jof282hAH+EddppyuXehjHRHTn/M4+qOc0ex5Pv/DM+kleEZmiAvVEGMF9rJOyQecfBy8R9DVbBeIHvYWK7BvLj9edNq8jiMu/Vfm4CZkbSDiFZ+LDvZR8N0b0a0zZz01CY43mTokQqqroK7cRdPlaTdDYKyaHwg0/ATkhewTZoJuYZFgdKwbwjePtIqV6kTkfYiDwvnYRfMrjrp15UYajZ70xA9tcYN+/se3sHOOjztgv04zbq8HMQL+0BRCgl4E4t6eq72gO0+yhvquO9Hm/WtvNtAERbvP4HLjNbKJbgTBrF1CV2iDMVyFUI+So8cKuapoGctJfOEt5nTfCT4Hqkm6HcmW8+UZOmtMCoZMS8mHqA7WKpLgltDrguWrvUcfDpGW5OxaOG4qlO0bZ7hV3DDTO+v42WxpWzADwnk4+s6jVDmSRyQMDtxv+C1nrLc6KSB+7LNsR+k1tJacUSSxKMnES6Gmcd0HGSPa1Tu4FAz9j1GLnI8hnbCG4UtGzOQbzpdOZDYtRvT9vTWesnm4X9vm7N+RaM3R+1RbnqHNyZ2Gg6a3Bgn/uzkCXqO+alqg/QIFI2qJ8ioF46mp8wOI2U6UMZ5QleT81skpcJEHq194DIiM6J1Q3jVaZ/I="
+#
+#
+#android:
+#
+# components:
+#
+# - tools
+# - tools
+#
+# - platform-tools
+#
+# - build-tools-$ANDROID_BUILD_TOOLS
+#
+# - android-$ANDROID_API
+#
+# - android-$EMULATOR_API
+#
+# - extra-google-m2repository
+#
+# - extra-android-m2repository # for design library
+#
+# - addon-google_apis-google-19 # google play services
+#
+## - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+#
+## - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+#
+# - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+#
+# licenses:
+# - android-sdk-preview-license-.+
+#
+# - android-sdk-license-.+
+#
+# - google-gdk-license-.+
+#
+#
+#before_install:
+#
+## - openssl aes-256-cbc -in KeyStore.jks.enc -out KeyStore.jks -d
+## - openssl aes-256-cbc -K $encrypted_c0801aa05af4_key -iv $encrypted_c0801aa05af4_iv -in KeyStore.jks.enc -out KeyStore.jks -d
+#
+# - mkdir "$ANDROID_HOME/licenses" || true
+#
+# - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+#
+# - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+#
+# - chmod +x gradlew
+#
+# - ./gradlew dependencies || true
+#
+#
+#before_script:
+# - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
+#
+## - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+#
+# - emulator -avd test -no-skin -no-audio -no-window &
+#
+# - android-wait-for-emulator
+#
+# - adb shell input keyevent 82 &
+#
+#
+#install: gradle build
+##script: gradle check
+#
+##script:
+## - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+#
+#script: ./gradlew connectedAndroidTest
+#
+#before_deploy:
+#
+# - cp $TRAVIS_BUILD_DIR/Keystore.jks $HOME
+#
+# - cd app/build/outputs/apk/
+#
+# - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/keystore.jks -storepass $storepass -keypass $keypass app-release.apk KeyStore
+#
+## Verification
+#
+# - jarsigner -verify app-release-unsigned.apk
+#
+# - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk AnchitTravisExample.apk"
+#
+#
+#deploy:
+#
+# provider: pages
+#
+# file: AnchitTravisExample.apk
+#
+# skip_cleanup: true
+#
+# github-token: $GITHUB_TOKEN
+#
+# keep-history: true
+#
 # on:
-#   repo: AnchitAndroidWorld/travis-testing
+#     branch: master
 #
-#   tags: true
+## on:
+##   repo: AnchitAndroidWorld/travis-testing
+##
+##   tags: true
+##
+##   jdk: oraclejdk8
+##
+## api_key:
+##
+##  secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
+##
 #
-#   jdk: oraclejdk8
 #
-# api_key:
-#
-#  secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
-#
+language: android
+android:
+  components:
+    - tools # to get the new `repository-11.xml`
+    - tools # see https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943)
+    - platform-tools
+    - build-tools-26.0.1
+    - android-26
 
-
+script:
+   - ./gradlew build connectedCheck
