@@ -164,6 +164,9 @@ android:
     - build-tools-26.0.1
     - android-26
 
+before_install:
+ - chmod +x gradlew
+
 script:
    - ./gradlew build connectedCheck
 after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
