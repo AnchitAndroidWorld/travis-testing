@@ -16,6 +16,8 @@ cache:
 
  - $HOME/.gradle/wrapper/
 
+ - $HOME/.android/build-cache
+
 env:
 
  global:
@@ -96,9 +98,12 @@ before_script:
  - adb shell input keyevent 82
 
 
-script:
+#script:
+#
+# - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
- - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+ script:
+ ./gradlew connectedAndroidTest
 
 before_deploy:
 
