@@ -102,7 +102,7 @@ before_script:
 #
 # - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
- script:
+script:
  - "./gradlew connectedAndroidTest"
 
 before_deploy:
