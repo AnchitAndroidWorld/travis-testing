@@ -1,0 +1,50 @@
+install: gradle wrapper --gradle-version 4.2
+language: android
+android:
+  components:
+  - tools
+  - tools
+  - platform-tools
+  - build-tools-26.0.2
+  - android-26
+  licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+before_install:
+- chmod +x gradlew
+script: gradle check
+after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
+#before_deploy:
+#- openssl aes-256-cbc -K $encrypted_657e27e4d3ee_key -iv $encrypted_657e27e4d3ee_iv -in KeyStore.jks.enc -out keystore.jks -d
+#- echo ANDROID_HOME
+#- echo ANDROID_BUILD_TOOLS
+#- echo TRAVIS_BUILD_DIR
+#- echo HOME
+#- echo GITHUB_TOKEN
+
+#
+#- cd ~
+#- cd /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/build/outputs/apk
+#- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/KeyStore.jks
+#  -storepass $storepass -keypass $keypass app-debug.apk travis
+#- jarsigner -verify app-debug.apk
+#- "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign -v 4 app-debug.apk
+#  TravisTest.apk"
+#- cd -
+#- scripts/tag.sh
+deploy:
+  provider: pages
+  on:
+    branch: master
+  api_key:
+    secure: rwih/tdiOPqgzdKEOzxgPf39YEy3gDiyqaRg2sjs3QJQ+yDkkfoFEP1cWEf7nPSidMyNMFL/5lGQmI3GYIurt0vZ435Lkl4DvMMRuuQUTdxPLSbduk9Huu/WIgfeFzI8KvMo+lO+y/uF4r5iiE4jdMBvb/BFV3Yn5KEk5aolhC+KJst+ku0BGH+cGaaWm7aDKP/8EiJbRLNqgaz8NuV/i2/7LyrK2yPkLRnzsE+9gVhEp93G/i03mLIKwPSCsoVXqDPzkbClQG1x3pydztKLf0Wz37uplkeuhBvZYndUcVQNOLZMdokcKj0bhoguNZ0btNKd2c/FaMZkkK40ZHKHDn6wOEJDkkg/ZlRVbIOpMj8buZuCECYdeeL3MzzGY/boM2cJ8QSKhbyodQl3lpHd5Az0qxvbQvTK/LfbtokSIyankegVDtQVBpkEKBgFBkwI5pyYhmqw0MMreL3kMQUbEc7BkL6Q9+1tPzlGU5gGj98s5EUih8bLC1qexvvp9U9OwkVtZsv1BE1b3oekfUR3dXj5RZP9rPkjXM8aY+F/wWml3PY/A1fKYQv62Xm0jY+pHa1epq2MJT4ghkYjBvJhvPmuuAtn1JvrEB239eYDtNlqq14tZQd3hbvHvzpy6FSm3ruSCFEq0ADieOpecOHK4v62UrKC0l3JigEILfs3tWw=
+  file: app/build/outputs/apk/release/app-debug.apk
+  overwrite: true
+  skip_cleanup: true
+  github-token: $GITHUB_TOKEN
+env:
+  global:
+  - secure: 0aFJFqoCI6fjNnXpngslln5KoEFWkz10JOyYX+6dsK0wlY1unM/RAsbzphz/sBhcFfZKvYxRAbGFFcs2fCuQ2NHW1Cjc32JZNdIwW66JpkwmoSnLC03iZ4c79d4TTCdhMF7klFlmmNzdwn8homHxsF8ATBmk4oMm5q09JjXamrEkD8bZDKwI2ku9eVajP0UVC8ykv8PVB3ZUKjf7iu3JJ+Z1uVrWOCGFN0XaNMFwykmW9tksRLE/izENwoMYAINFgbIMjsGtrEpJc3hjQMHVWI8NlEA1kHEJEKb3N3hegDhWm880ebB2BxqH/9MwAQakvUZurDQ3opjzO2Obdy98PQXCpwbDe6zINKN7Wkvg+h/gxt/If3voGrsK25FPkvUxZmMck+TjGivE25b5qD/jaOfiw2tiHCke6dMymsBguRGoZPSqT2CAfEwEJUw7vFZk/oqHvQ8OSgclvFm3PQFT1qGTA4U0nYEof2bkU3XkMlOJuGNAOMYjsxMj8inTQI/8LSMhi5RfdsZWeCYZuf4EMx6w5FLNJurVhoecOIhV/4dTQf1uzuF4fQKX8e/sAtAJ6rTdm9nxZNH+gVWhP7xnFi6MgCG8azYgLgUwiF3jv1yE/8D7JMyM1515MWiq0MMpAftFfnonV3cEQDoUDToe7xKnRWy6FG/DUz8ypgZh/hc=
+  - secure: fnMpGcphPED0UK8brzBifjHIIZuqxXIR4WT1OMOj9dxTeZXmW37pnXf0W7pQp38mzgeDY+hahPgQJ9/CwqJSqWuym3c2OjtO2+GM8A9//+Ei0avkSBZ0i8Nu5hIBsQ1Ffb3ZDVZqTiKTwstjwmM11qNEbm4Y5c/7pYNcx/OP4bl3cCq3j5tp+wbcgey8WfafUwBcSZXyvdB6MhAhb6aE7BPA8vBSw6/gMQHjhUuyN2F3HjX8Q0BRcpbyQ9Lyu/4nOEyYP4YOBcBV8CW3Ft+Cvhspdfbsfe8pYkknJ+rnZ0qL3/ixs81rQ/DBFv6i40xJ0z1EStZa35cMZJtccpWoSdTwyAd4ZSO76s9Q3GSm6yzCDzT9+LeW/e4m0tct8+SCcFfINdUa076H5yzY7tExfYqUw8CeMJJc6INzoh9sFtwQtWUEJaJLOt9Y0CLYe7kZiC4iYitmV9WrVx6Z/9Xq7rJCVc9jMuf1qL/Us3G5szyIFXfnJ/du1pkEYpw9E1dKH8wSnjXjpGb3xIKiGjRelugyilSm9i66eHLohiSRCOaJA4tgX3Gxj4j8ZUF8R0NFLiDqHv4OWNpHUUReHlR09LT5KEZDe57qemUxl4l3R5pF1HBpIm5PM6O76s0OaKUD2Y5vBmy647yDWyTaThzEgg4lvwkjmPaD8feZP+shFlw=
+  - secure: MZ5Yeiq54xcRDaq96WiaZgrB8RtJ4/Y6EKuSi7UMBVpYTRots/8yRa/gOFe2ENvILHc2TMvQwvljfc+L4IN5ikm4zF0DWxELZ4u5r0Dfc3Mcp0pfQJ1PHL/Us94ZmsnjE+QN+c62/qm2fEyNRo3SFWe+vSO0JBexXL8o/AROyT4AqNL/g2uMdiY4lR8X6x2BiElBZFwWLSIMzcYbZIcOku6c9qmIVPR1Uu4HRacJQXjWFdTDLcUsDSv8LK34dzZ7SMShCY0itgMBI1VDr/rak+ydhehZJmEUmHPBXXp4zioRH9YEXEAkAisE2ey/8B+n39oAQmB9z16C67NGHAyU3SnIqvMXTkcuw5kKGtqkmn490C2aHfwTGglueOJ/GpO1uqeSDw5Z0HzrdlRrS9sCo7lKxYzkhp7mwut+syrY5ybMRUXvZpapACNBy/MIbaZLuWSz5XyGr0rCqfdW0aUtwP4EQ3k0/rnuGpoKRhW5ODvMA1ENrmj+SC0uB1TOlWHLjKjCcpfTgf3BIS62ahOWTspUKZLvTSd1yZ9l/52W2/gwB0vDDoLOGbeaHsEAZ7WRIoVKfjqayHFnVVN4IeNIXVKRw1+kzpcYKc7HavUpwK0wgyezgSOUXry6LKbeuG+jNAoe6Eu1slD64KlQgW/ZAGRuRB99Y/EWEY9Ly69Hv3k=
