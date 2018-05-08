@@ -17,11 +17,11 @@ script: gradle check
 after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
 before_deploy:
 #- openssl aes-256-cbc -K $encrypted_657e27e4d3ee_key -iv $encrypted_657e27e4d3ee_iv -in KeyStore.jks.enc -out keystore.jks -d
-- echo ${ANDROID_HOME}
-- echo ${ANDROID_BUILD_TOOLS}
-- echo ${TRAVIS_BUILD_DIR}
-- echo ${HOME}
-- echo ${GITHUB_TOKEN}
+- echo ANDROID_HOME
+- echo ANDROID_BUILD_TOOLS
+- echo TRAVIS_BUILD_DIR
+- echo HOME
+- echo GITHUB_TOKEN
 
 #
 #- cd ~
