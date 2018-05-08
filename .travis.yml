@@ -107,11 +107,10 @@ before_script:
 install: gradle build
 #script: gradle check
 
-script:
- - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
-
 #script:
-# - "./gradlew connectedAndroidTest"
+# - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+
+script: ./gradlew connectedAndroidTest
 
 before_deploy:
 
