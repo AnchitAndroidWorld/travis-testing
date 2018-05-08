@@ -13,8 +13,8 @@ android {
         applicationId "com.webkul.mobikul.app"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 114
-        versionName "1.14"
+        versionCode 115
+        versionName "1.15"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
