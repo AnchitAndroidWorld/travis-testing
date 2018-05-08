@@ -26,7 +26,7 @@ before_deploy:
 #
 #- cd ~
 #- cd /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/build/outputs/apk
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/keystore.jks
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/KeyStore.jks
   -storepass $storepass -keypass $keypass app-debug.apk travis
 - jarsigner -verify app-debug.apk
 - "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign -v 4 app-debug.apk
