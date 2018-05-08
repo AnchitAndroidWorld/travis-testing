@@ -1,6 +1,9 @@
 language: android
 sudo: required
 jdk: oraclejdk8
+notifications:
+ email:
+  - anchit.makkar849@webkul.com
 
 before_cache:
 
