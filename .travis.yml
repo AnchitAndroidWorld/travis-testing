@@ -75,5 +75,5 @@ android:
 before_install:
  - chmod +x gradlew
 
-script: gradle check
+script:  chmod +x gradle check
 after_failure: "cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml"
