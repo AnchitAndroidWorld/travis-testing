@@ -176,5 +176,5 @@ before_install:
  - chmod +x gradlew
 
 script:
-   - ./gradlew build connectedCheck
+ - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
