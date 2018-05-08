@@ -17,15 +17,20 @@ before_install:
 - chmod +x gradlew
 script: gradle check
 after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
+before_deploy:
+- cp $TRAVIS_BUILD_DIR/.keystore $HOME
+# replace with your-apk-name leave release-unsigned.apk as it is
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk TravisTestApk -keystore $HOME/.keystore -storepass $storepass -keypass $keypass
+# replace with your-apk-name leave release-unsigned.apk as it is
+- "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/TravisTestApk.apk"
 deploy:
   provider: releases
   api_key:
     secure: ZGJ+xHrpuzwNyzJQhxEIC9ft0PL5ipC4ga1Xndtf+jz3ZCJQ0e3byztMXStWBd3dcyBMY46mCORBRN3UUD8H4mALWYaW9ARQsv77IHtLUNXxCfRWJrwaxCBCADVzoTLgLCoJPOC/5v87NSlh19Jl47fTMVjrnaW88o9ie5qGE3orUXSuTpvdcVqhBo7P0blyOdYhkW71SE+EXGxmDPivU5uDJnZJ+I6H3Qc1XNpWPmnd5TOZL7moUcYwJoN0uMzmBayWZ4Ltv9jNbm4Uw2OkobN4SYbNsOznh82TGCsdMC2aFaNs6L4Uc//m16y50Jw0ZfNAPkHfKfCYkGgBsVkazFE6afSFHNqexg5y+0GNUU06f/VHlROKcNDRHM6jaHNSkH2OquL6oFLEYy6EN5iOIUyEhVPMz/fMzVid/6RuIdLbjBT2VNQCSScaVRCA1koO/Ekm32N4RIfA/dPdL0oEWnY9YErMKjMe7bCIbAFdd3ayRC+kaUp3wWZdAhsBq+Km5jVID1zoF85Pm2OjXftg/JRtqNsMkCoKPEU0uKgX7UtjHkJsLplEd1Fy1qFxy37aSe1urpQhxDP6DN5SzSML4hExuKdB2RhmyKnAGLZ0wHuyLa/4ngO91dXTNRiHgwc0OuqXMfOPrOwMa4QfwGriouWFF7Zjba7XRzx4T2sOjA0=
-  file: app/build/outputs/apk/app-debug.apk
+  file: "$HOME/android/TravisTestApk.apk"
   skip_cleanup: true
   on:
     tags: true
-    all_branches: true
 env:
   global:
   - secure: 0aFJFqoCI6fjNnXpngslln5KoEFWkz10JOyYX+6dsK0wlY1unM/RAsbzphz/sBhcFfZKvYxRAbGFFcs2fCuQ2NHW1Cjc32JZNdIwW66JpkwmoSnLC03iZ4c79d4TTCdhMF7klFlmmNzdwn8homHxsF8ATBmk4oMm5q09JjXamrEkD8bZDKwI2ku9eVajP0UVC8ykv8PVB3ZUKjf7iu3JJ+Z1uVrWOCGFN0XaNMFwykmW9tksRLE/izENwoMYAINFgbIMjsGtrEpJc3hjQMHVWI8NlEA1kHEJEKb3N3hegDhWm880ebB2BxqH/9MwAQakvUZurDQ3opjzO2Obdy98PQXCpwbDe6zINKN7Wkvg+h/gxt/If3voGrsK25FPkvUxZmMck+TjGivE25b5qD/jaOfiw2tiHCke6dMymsBguRGoZPSqT2CAfEwEJUw7vFZk/oqHvQ8OSgclvFm3PQFT1qGTA4U0nYEof2bkU3XkMlOJuGNAOMYjsxMj8inTQI/8LSMhi5RfdsZWeCYZuf4EMx6w5FLNJurVhoecOIhV/4dTQf1uzuF4fQKX8e/sAtAJ6rTdm9nxZNH+gVWhP7xnFi6MgCG8azYgLgUwiF3jv1yE/8D7JMyM1515MWiq0MMpAftFfnonV3cEQDoUDToe7xKnRWy6FG/DUz8ypgZh/hc=
