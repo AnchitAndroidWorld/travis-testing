@@ -18,9 +18,9 @@ before_install:
 script: gradle check
 after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
 before_deploy:
-- cp $TRAVIS_BUILD_DIR/.KeyStore $HOME
+- cp $TRAVIS_BUILD_DIR/KeyStore.jks $HOME
 # replace with your-apk-name leave release-unsigned.apk as it is
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk TravisTestApk -keystore $HOME/.KeyStore -storepass $storepass -keypass $keypass
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk TravisTestApk -keystore $HOME/KeyStore.jks -storepass $storepass -keypass $keypass
 # replace with your-apk-name leave release-unsigned.apk as it is
 - "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/TravisTestApk.apk"
 deploy:
