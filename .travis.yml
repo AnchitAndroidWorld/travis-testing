@@ -17,10 +17,11 @@ script: gradle check
 after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
 #before_deploy:
 ##- openssl aes-256-cbc -K $encrypted_657e27e4d3ee_key -iv $encrypted_657e27e4d3ee_iv -in KeyStore.jks.enc -out keystore.jks -d
-#- echo "*$ANDROID_HOME*"
-#- echo "*$ANDROID_BUILD_TOOLS*"
-#- echo "*$TRAVIS_BUILD_DIR*"
-#- echo "*$HOME*"
+#- echo ANDROID_HOME
+#- echo $ANDROID_BUILD_TOOLS
+#- echo $TRAVIS_BUILD_DIR
+#- echo $HOME
+#- echo $GITHUB_TOKEN
 #
 #
 #- cd ~
@@ -41,6 +42,7 @@ deploy:
 #  file: app/build/outputs/apk/release/TravisTest.apk
   overwrite: true
   skip_cleanup: true
+  github-token: $GITHUB_TOKEN
 env:
   global:
   - secure: 0aFJFqoCI6fjNnXpngslln5KoEFWkz10JOyYX+6dsK0wlY1unM/RAsbzphz/sBhcFfZKvYxRAbGFFcs2fCuQ2NHW1Cjc32JZNdIwW66JpkwmoSnLC03iZ4c79d4TTCdhMF7klFlmmNzdwn8homHxsF8ATBmk4oMm5q09JjXamrEkD8bZDKwI2ku9eVajP0UVC8ykv8PVB3ZUKjf7iu3JJ+Z1uVrWOCGFN0XaNMFwykmW9tksRLE/izENwoMYAINFgbIMjsGtrEpJc3hjQMHVWI8NlEA1kHEJEKb3N3hegDhWm880ebB2BxqH/9MwAQakvUZurDQ3opjzO2Obdy98PQXCpwbDe6zINKN7Wkvg+h/gxt/If3voGrsK25FPkvUxZmMck+TjGivE25b5qD/jaOfiw2tiHCke6dMymsBguRGoZPSqT2CAfEwEJUw7vFZk/oqHvQ8OSgclvFm3PQFT1qGTA4U0nYEof2bkU3XkMlOJuGNAOMYjsxMj8inTQI/8LSMhi5RfdsZWeCYZuf4EMx6w5FLNJurVhoecOIhV/4dTQf1uzuF4fQKX8e/sAtAJ6rTdm9nxZNH+gVWhP7xnFi6MgCG8azYgLgUwiF3jv1yE/8D7JMyM1515MWiq0MMpAftFfnonV3cEQDoUDToe7xKnRWy6FG/DUz8ypgZh/hc=
