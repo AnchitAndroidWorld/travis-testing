@@ -177,4 +177,4 @@ before_install:
 
 script:
  - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
-after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
+after_failure: "cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml"
