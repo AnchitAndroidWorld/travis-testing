@@ -155,6 +155,7 @@
 ##
 #
 #
+install: gradle wrapper --gradle-version 4.2
 language: android
 android:
   components:
