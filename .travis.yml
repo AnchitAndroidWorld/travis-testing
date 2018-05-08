@@ -112,7 +112,7 @@ before_deploy:
 
  - jarsigner -verify app-release.apk
 
- - "${ANDROID_HOME}/build-tools/27.0.3/zipalign -v 4 app-release.apk AnchitTravisExample.apk"
+ - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release.apk AnchitTravisExample.apk"
 
 
 deploy:
