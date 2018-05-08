@@ -140,14 +140,18 @@ deploy:
  keep-history: true
 
  on:
-   repo: AnchitAndroidWorld/travis-testing
+     branch: master
 
-   tags: true
-
-   jdk: oraclejdk8
-
- api_key:
-
-  secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
+# on:
+#   repo: AnchitAndroidWorld/travis-testing
+#
+#   tags: true
+#
+#   jdk: oraclejdk8
+#
+# api_key:
+#
+#  secure: "mU9Z8twEO9IID9LtImtVVK8dfyYmZxXalJzhq0v19loLVcLiw9SGmoZZtnAHDaKOJDtkq3MfxqyD1AXW2YGgmZCEbRGyhNPo8v+EJAiupZ2BMOTDAs/yi4n9aWGk/sgowZ19hVsFJu0H/clpczXJx9fQNQwrtaQwbZlhEbc3aYW/zhHC3B/uw0VVDG7rdXXYus+ImruTgaJRkT9CKQ5qwiCTTHBAbgVzpYnbo+HqFe+RbNxTfOS1f29ILURviHQeBxNKOj5ckejXxx29bliTnYBThCidrph2NemUfItgUf/VBGqtJBLuCfdUBi1D/4yq2eR3DC3Z/slA4JY+34M1cEFtgnQM69PyI2Qvh5YerOKmvXRV/fga4a/Bq7Ljts8BsIucdMfaL4ZCqSlIndy9fdheTUeOX9StZdkmyrHKhyzVNGkJP9H+GZmCWYWAOyjHeffx+zRKIkRcf68c7P/JoMgj/Gxl+ytRAzosh+wM+8FU9UHDwG9kMnOTppvfmRABjmgHk7/tspDvaPVJ5Qr7nj1wU4OQ4AqNT1RoZHPjswTg6Iy9RO+RiBsV2XBJ9Eo1dBbUZ+xygPubtOaMfC911pJwbu9ntTk9WGmQUoqVM5zw4w3FnwWZ9V67RbAmiLHEOiGZ3cz1znR9ZDNoFSs6y8VIKxbiTmol2c81CUOLvWw="
+#
 
 
