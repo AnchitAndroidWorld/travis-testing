@@ -1,55 +1,79 @@
+#
+#sudo: required
+#
+#language: android
+#jdk: oraclejdk8
+#
+#before_cache:
+#  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+#  - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+#
+#cache:
+#  directories:
+#  - $HOME/.gradle/caches/
+#  - $HOME/.gradle/wrapper/
+#  - $HOME/.android/build-cache
+#
+#env:
+# global:
+# - ANDROID_API=26
+# - ANDROID_BUILD_TOOLS=26.0.2
+# - ADB_INSTALL_TIMEOUT=5 # Minutes.
+# - secure: "hWWCHR0/smobILCB2WNwYujvbRW9ITWYaeiAPTC87kk3LLo9CgN/3IvixLe43cMxSfxoLfRKfwYM0uz2ObMjitoIyOxZrjgaJrAoiA2odacd4+7mGCy2gef+Cc5GOENq1fGQAPJ2zkid+J8gmpYkCtF5+JoUfm04nVZrX+laLfA4Y9MYrCrFxD1Z7y+cE55QV8cAU6/UbkWjJbW8I/6vPYBvBYT0Fegxmy1iewx1l2IwVLJXQCRRzlCInEf9Ed8NhVSPYwo+yQ1APQhnWCeqEyz5lEVwtKqjluSkp0iPJO92hKM2OcDCAAAsSkUiB0Qt7rr87GHkTBPMZXpbyMSB1T5PDfyC33wMzHB5du+LqNu7QigbnVh/yRx4/ANsOBUXBsBAFggnBbfSxRz+gq6zWdD5tnBGtLv0KBmipxtIM2LQM8yoOjXaU6ssjjf92uYxSZtTxTYtNMtHgrpcPS1CudSCA46HXCDcLY41v8tPIvyEjN2wLm2rfhN+3PYauvqSZWzgFldTqEGBMo+wJObAepswAi8ZozWHLkwg/RhloKdU/2DQJ0hvFWUxrwDSr+SqE8pco4n/uWqA37wyLa69qvtoiToFSCZ2bX2zwtqmqvI99HoYkilwSTnvjAlhLV26VOfqNAkWdZ5339iCW2imP0rM0OwkzDt/RTsYcQ3pICg=" # storepass
+# - secure: "CRZFTOFNeH1WiIHYCh/070cKRTKeLhqEqDYEPQLNUI4rHi98wgJO/4jqUhISQbeM7r4sOJm7fBZ4rKDWHpkNk5ARUESj+husCfSqAkoSDgSOoRb008CNCxSoO34otKGo4SihZ9PIz7lpS7sLtKJyKuo/4cgXXldiucHAIvAPQLgfUzZzpjB6cjpDz1dg1bpVtcSF+MDH0u37h0dbLiadJjbbJ/URHPx91WBjuTLC3KgJdWMhv9zs5Qo0ysh95K3jziXCb9QDfs1CTbjJCnkEZlS7y48Q7wsm3q6Yezmr7JGSK6Ty/qImeQU7EHSQrxtekuzlPjNrPjiXHtbayNtDZSecdrkjkENYaT5WtGQRpAymVU+a5MI7anjGuFKOIQaSYG/9RRh4jGWkz5KJQuGQmgYi0m3Bv9ueBairr/6resGDgriyUa2l1IU/KWI/T1Y0zyKPc/DSJFf1jSFrNTksHUuI/mRPulQ/kICq2/v4zlvFUz6wMpCk2DU3tc9O+Sk5gBpwk/E0lOSTNFM58Lkw/BuxrZEV8SaJ1pCO142jOv6yj/WjFNS0eDSNxMtT9mAk3R6mxoHz8wSQCrLnqtw3SMl57IHt3aVKO0Ml3rD8kSBG1eZdJqjxcp65U6cmWIYJmUauEIk2fHSc3DxtMz5ReRS+e8REQixD8qv+H7xJkWw=" # keypass
+# - secure: "QjEmpx4mOk12wznxr9HKSM39O4jfJnrPepmsYoA31NSrPX7DrhxMpQRq/I5kyKXOVajWyV2rymadY8T7W/uC47OceqGKtpisxqRtN/dIM+QH6EdkCFLHYiz9YkuNN++oZXk5Hhz/FIkhXu2yPt3yPx4lEhNv90ryFFQPuco8vWSH2uf1rtLYYo9+kJF9W7l6XdTRtveCOq99sVJsJqvUC53SvZcbIVLDqD6oHUKxmBGULfBornUySuJlqV50dxrQ48Syz15V1RwRyWaUR0e183S6xcZayUSjdNyeLpsWe0V/XdDtrxj9ttS6E784cNqF/kiv+nA7D8pRYdf4UJMA/uZjYP+N+HvmcC/hYjdvwqKlglmWsVy4a30LsuHogjZYR0T7mXjautP/N/1ssX0gWxLDIA6Lut9w5b5/ZmLLEXEC1ZNzga/eW+tVcRSvb1648jbbU0vl+A6SEsR0tb7FLFg+cHmj/54NXAGrP/VBfUHQ26I7IG5wIIxAFAVcS73rfPEah2wuGcHW3PfVP/X8qjwxVue+pX/jCETx2h5q+R+dBKZ2YHKnwmYHaqYqZg3ivUKgl6oGE2vYG4L1cHX15NYlkPLmTw0n9aQB+ggXWP1r/dHoD28NDgagEUGpfrgrGv6YVus5GDMQ4Q6MZClukFJPRDVWOr6BSLZ1L2wRUxA=" # GH_TOKEN
+#
+#android:
+#  components:
+#  - tools
+#  - tools # Running this twice get's the latest build tools (https://github.com/codepath/android_guides/wiki/Setting-up-Travis-CI)
+#  - platform-tools
+#  - android-${ANDROID_API}
+#  - build-tools-${ANDROID_BUILD_TOOLS}
+#  - extra
+#
+#script:
+#- "./gradlew clean test build"
+#
+#before_deploy:
+#- openssl aes-256-cbc -K $encrypted_657e27e4d3ee_key -iv $encrypted_657e27e4d3ee_iv -in Keystore.jks.enc -out keystore.jks -d
+#- cd app/build/outputs/apk/release
+#- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk key0
+#- jarsigner -verify app-release-unsigned.apk
+#- "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign -v 4 app-release-unsigned.apk TravisTest.apk"
+#- cd -
+#- scripts/tag.sh
+#
+#deploy:
+#  provider: releases
+#  on:
+#    branch: master
+#  api_key:
+#    secure: "rwih/tdiOPqgzdKEOzxgPf39YEy3gDiyqaRg2sjs3QJQ+yDkkfoFEP1cWEf7nPSidMyNMFL/5lGQmI3GYIurt0vZ435Lkl4DvMMRuuQUTdxPLSbduk9Huu/WIgfeFzI8KvMo+lO+y/uF4r5iiE4jdMBvb/BFV3Yn5KEk5aolhC+KJst+ku0BGH+cGaaWm7aDKP/8EiJbRLNqgaz8NuV/i2/7LyrK2yPkLRnzsE+9gVhEp93G/i03mLIKwPSCsoVXqDPzkbClQG1x3pydztKLf0Wz37uplkeuhBvZYndUcVQNOLZMdokcKj0bhoguNZ0btNKd2c/FaMZkkK40ZHKHDn6wOEJDkkg/ZlRVbIOpMj8buZuCECYdeeL3MzzGY/boM2cJ8QSKhbyodQl3lpHd5Az0qxvbQvTK/LfbtokSIyankegVDtQVBpkEKBgFBkwI5pyYhmqw0MMreL3kMQUbEc7BkL6Q9+1tPzlGU5gGj98s5EUih8bLC1qexvvp9U9OwkVtZsv1BE1b3oekfUR3dXj5RZP9rPkjXM8aY+F/wWml3PY/A1fKYQv62Xm0jY+pHa1epq2MJT4ghkYjBvJhvPmuuAtn1JvrEB239eYDtNlqq14tZQd3hbvHvzpy6FSm3ruSCFEq0ADieOpecOHK4v62UrKC0l3JigEILfs3tWw=" #travis encypted Api Key From Github
+#  file: "app/build/outputs/apk/release/TravisTest.apk"
+#  overwrite: true
+#  skip_cleanup: true
 
-sudo: required
 
+install: gradle wrapper --gradle-version 4.2
 language: android
-jdk: oraclejdk8
-
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
-
-cache:
-  directories:
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
-  - $HOME/.android/build-cache
-
-env:
- global:
- - ANDROID_API=26
- - ANDROID_BUILD_TOOLS=26.0.2
- - ADB_INSTALL_TIMEOUT=5 # Minutes.
- - secure: "hWWCHR0/smobILCB2WNwYujvbRW9ITWYaeiAPTC87kk3LLo9CgN/3IvixLe43cMxSfxoLfRKfwYM0uz2ObMjitoIyOxZrjgaJrAoiA2odacd4+7mGCy2gef+Cc5GOENq1fGQAPJ2zkid+J8gmpYkCtF5+JoUfm04nVZrX+laLfA4Y9MYrCrFxD1Z7y+cE55QV8cAU6/UbkWjJbW8I/6vPYBvBYT0Fegxmy1iewx1l2IwVLJXQCRRzlCInEf9Ed8NhVSPYwo+yQ1APQhnWCeqEyz5lEVwtKqjluSkp0iPJO92hKM2OcDCAAAsSkUiB0Qt7rr87GHkTBPMZXpbyMSB1T5PDfyC33wMzHB5du+LqNu7QigbnVh/yRx4/ANsOBUXBsBAFggnBbfSxRz+gq6zWdD5tnBGtLv0KBmipxtIM2LQM8yoOjXaU6ssjjf92uYxSZtTxTYtNMtHgrpcPS1CudSCA46HXCDcLY41v8tPIvyEjN2wLm2rfhN+3PYauvqSZWzgFldTqEGBMo+wJObAepswAi8ZozWHLkwg/RhloKdU/2DQJ0hvFWUxrwDSr+SqE8pco4n/uWqA37wyLa69qvtoiToFSCZ2bX2zwtqmqvI99HoYkilwSTnvjAlhLV26VOfqNAkWdZ5339iCW2imP0rM0OwkzDt/RTsYcQ3pICg=" # storepass
- - secure: "CRZFTOFNeH1WiIHYCh/070cKRTKeLhqEqDYEPQLNUI4rHi98wgJO/4jqUhISQbeM7r4sOJm7fBZ4rKDWHpkNk5ARUESj+husCfSqAkoSDgSOoRb008CNCxSoO34otKGo4SihZ9PIz7lpS7sLtKJyKuo/4cgXXldiucHAIvAPQLgfUzZzpjB6cjpDz1dg1bpVtcSF+MDH0u37h0dbLiadJjbbJ/URHPx91WBjuTLC3KgJdWMhv9zs5Qo0ysh95K3jziXCb9QDfs1CTbjJCnkEZlS7y48Q7wsm3q6Yezmr7JGSK6Ty/qImeQU7EHSQrxtekuzlPjNrPjiXHtbayNtDZSecdrkjkENYaT5WtGQRpAymVU+a5MI7anjGuFKOIQaSYG/9RRh4jGWkz5KJQuGQmgYi0m3Bv9ueBairr/6resGDgriyUa2l1IU/KWI/T1Y0zyKPc/DSJFf1jSFrNTksHUuI/mRPulQ/kICq2/v4zlvFUz6wMpCk2DU3tc9O+Sk5gBpwk/E0lOSTNFM58Lkw/BuxrZEV8SaJ1pCO142jOv6yj/WjFNS0eDSNxMtT9mAk3R6mxoHz8wSQCrLnqtw3SMl57IHt3aVKO0Ml3rD8kSBG1eZdJqjxcp65U6cmWIYJmUauEIk2fHSc3DxtMz5ReRS+e8REQixD8qv+H7xJkWw=" # keypass
- - secure: "QjEmpx4mOk12wznxr9HKSM39O4jfJnrPepmsYoA31NSrPX7DrhxMpQRq/I5kyKXOVajWyV2rymadY8T7W/uC47OceqGKtpisxqRtN/dIM+QH6EdkCFLHYiz9YkuNN++oZXk5Hhz/FIkhXu2yPt3yPx4lEhNv90ryFFQPuco8vWSH2uf1rtLYYo9+kJF9W7l6XdTRtveCOq99sVJsJqvUC53SvZcbIVLDqD6oHUKxmBGULfBornUySuJlqV50dxrQ48Syz15V1RwRyWaUR0e183S6xcZayUSjdNyeLpsWe0V/XdDtrxj9ttS6E784cNqF/kiv+nA7D8pRYdf4UJMA/uZjYP+N+HvmcC/hYjdvwqKlglmWsVy4a30LsuHogjZYR0T7mXjautP/N/1ssX0gWxLDIA6Lut9w5b5/ZmLLEXEC1ZNzga/eW+tVcRSvb1648jbbU0vl+A6SEsR0tb7FLFg+cHmj/54NXAGrP/VBfUHQ26I7IG5wIIxAFAVcS73rfPEah2wuGcHW3PfVP/X8qjwxVue+pX/jCETx2h5q+R+dBKZ2YHKnwmYHaqYqZg3ivUKgl6oGE2vYG4L1cHX15NYlkPLmTw0n9aQB+ggXWP1r/dHoD28NDgagEUGpfrgrGv6YVus5GDMQ4Q6MZClukFJPRDVWOr6BSLZ1L2wRUxA=" # GH_TOKEN
-
 android:
   components:
-  - tools
-  - tools # Running this twice get's the latest build tools (https://github.com/codepath/android_guides/wiki/Setting-up-Travis-CI)
-  - platform-tools
-  - android-${ANDROID_API}
-  - build-tools-${ANDROID_BUILD_TOOLS}
-  - extra
+    - tools # to get the new `repository-11.xml`
+    - tools # see https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943)
+    - platform-tools
+    - build-tools-26.0.2
+    - android-26
 
-script:
-- "./gradlew clean test build"
+  licenses:
+    - android-sdk-preview-license-.+
 
-before_deploy:
-- openssl aes-256-cbc -K $encrypted_657e27e4d3ee_key -iv $encrypted_657e27e4d3ee_iv -in Keystore.jks.enc -out keystore.jks -d
-- cd app/build/outputs/apk/release
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ${TRAVIS_BUILD_DIR}/keystore.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk key0
-- jarsigner -verify app-release-unsigned.apk
-- "${ANDROID_HOME}/build-tools/${ANDROID_BUILD_TOOLS}/zipalign -v 4 app-release-unsigned.apk TravisTest.apk"
-- cd -
-- scripts/tag.sh
+    - android-sdk-license-.+
 
-deploy:
-  provider: releases
-  on:
-    branch: master
-  api_key:
-    secure: "rwih/tdiOPqgzdKEOzxgPf39YEy3gDiyqaRg2sjs3QJQ+yDkkfoFEP1cWEf7nPSidMyNMFL/5lGQmI3GYIurt0vZ435Lkl4DvMMRuuQUTdxPLSbduk9Huu/WIgfeFzI8KvMo+lO+y/uF4r5iiE4jdMBvb/BFV3Yn5KEk5aolhC+KJst+ku0BGH+cGaaWm7aDKP/8EiJbRLNqgaz8NuV/i2/7LyrK2yPkLRnzsE+9gVhEp93G/i03mLIKwPSCsoVXqDPzkbClQG1x3pydztKLf0Wz37uplkeuhBvZYndUcVQNOLZMdokcKj0bhoguNZ0btNKd2c/FaMZkkK40ZHKHDn6wOEJDkkg/ZlRVbIOpMj8buZuCECYdeeL3MzzGY/boM2cJ8QSKhbyodQl3lpHd5Az0qxvbQvTK/LfbtokSIyankegVDtQVBpkEKBgFBkwI5pyYhmqw0MMreL3kMQUbEc7BkL6Q9+1tPzlGU5gGj98s5EUih8bLC1qexvvp9U9OwkVtZsv1BE1b3oekfUR3dXj5RZP9rPkjXM8aY+F/wWml3PY/A1fKYQv62Xm0jY+pHa1epq2MJT4ghkYjBvJhvPmuuAtn1JvrEB239eYDtNlqq14tZQd3hbvHvzpy6FSm3ruSCFEq0ADieOpecOHK4v62UrKC0l3JigEILfs3tWw=" #travis encypted Api Key From Github
-  file: "app/build/outputs/apk/release/TravisTest.apk"
-  overwrite: true
-  skip_cleanup: true
+    - google-gdk-license-.+
+
+before_install:
+ - chmod +x gradlew
+
+script: gradle check
+after_failure: "cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml"
