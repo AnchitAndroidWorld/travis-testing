@@ -77,3 +77,13 @@ before_install:
 
 script: gradle check
 after_failure: "cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml"
+env:
+  global:
+    secure: nmepY/pl7t7GZVTNYEBxYswhfOciRtbzlIUZaEG9KluDzt6PezXqVImrDdzQCEmXMmWqinAYM85mPSb4bFqkk5HE4CR2XcYDfugq5JI2PnNLDLxQNUGVRZceGqlvfCPqSWqExkegrGC68UNYzqfy9owj7xpS+/HTSdB0+c6YXLcAaxgr+kx9fW6Z34vNJK+v8IHS5omEkQhEEHgNMa0Be8cw7BVjWjBm4AFyozzzBspZ6rMyeWdzmbqXOaz5YISdU6JF/Da3XHcQK1z+447PIrN2RiRrkYblFVoKARzAcrYUgY9Hlswvx+qOMgS2K2ro1H6ErbWl2pF7q2p8QPCYzVOza2/2jyl5p5XRIP3sdn0B2VFw89XfsWhBJAsO+WzFGUK7kqyNsj4vZCrD3lbnhc8mDnxQQRv1/03wmDneZSZioBfsS5pr5kLH4f7PVvUmAgdajyoGcKq30GrbzCoIqgVthEpaCWCg9Vyzbfp7EUWZBP+A2yTYSdWWPyBMKJn+qHr8Z3zRN5v2TtxqyGmC4NZ5qGQubnSlnvLZQGsTdthnuiJx0P0YgqdVwKKws0H1oWs80Bl7OycPBcC0mxL19ikpgX891bfULhwyv4yq1/ml3MAtr1SVDVyNMw2WP181zgrc45fmw6ce192ygPflkjGXtaImKbyw0vSiwhAJlmA=
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
