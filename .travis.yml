@@ -12,22 +12,20 @@ android:
   - android-sdk-license-.+
   - google-gdk-license-.+
 before_install:
+- openssl aes-256-cbc -K $encrypted_0a7b71a90fb2_key -iv $encrypted_0a7b71a90fb2_iv
+  -in KeyStore.jks.enc -out KeyStore.jks -d
 - chmod +x gradlew
 script: gradle check
 after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testing/app/lint-results-debug.xml
-
 deploy:
   provider: releases
   api_key:
-      secure: rwih/tdiOPqgzdKEOzxgPf39YEy3gDiyqaRg2sjs3QJQ+yDkkfoFEP1cWEf7nPSidMyNMFL/5lGQmI3GYIurt0vZ435Lkl4DvMMRuuQUTdxPLSbduk9Huu/WIgfeFzI8KvMo+lO+y/uF4r5iiE4jdMBvb/BFV3Yn5KEk5aolhC+KJst+ku0BGH+cGaaWm7aDKP/8EiJbRLNqgaz8NuV/i2/7LyrK2yPkLRnzsE+9gVhEp93G/i03mLIKwPSCsoVXqDPzkbClQG1x3pydztKLf0Wz37uplkeuhBvZYndUcVQNOLZMdokcKj0bhoguNZ0btNKd2c/FaMZkkK40ZHKHDn6wOEJDkkg/ZlRVbIOpMj8buZuCECYdeeL3MzzGY/boM2cJ8QSKhbyodQl3lpHd5Az0qxvbQvTK/LfbtokSIyankegVDtQVBpkEKBgFBkwI5pyYhmqw0MMreL3kMQUbEc7BkL6Q9+1tPzlGU5gGj98s5EUih8bLC1qexvvp9U9OwkVtZsv1BE1b3oekfUR3dXj5RZP9rPkjXM8aY+F/wWml3PY/A1fKYQv62Xm0jY+pHa1epq2MJT4ghkYjBvJhvPmuuAtn1JvrEB239eYDtNlqq14tZQd3hbvHvzpy6FSm3ruSCFEq0ADieOpecOHK4v62UrKC0l3JigEILfs3tWw=
-#  github-token: $GITHUB_TOKEN
-  file: "app/build/outputs/apk/app-debug.apk"
+    secure: rwih/tdiOPqgzdKEOzxgPf39YEy3gDiyqaRg2sjs3QJQ+yDkkfoFEP1cWEf7nPSidMyNMFL/5lGQmI3GYIurt0vZ435Lkl4DvMMRuuQUTdxPLSbduk9Huu/WIgfeFzI8KvMo+lO+y/uF4r5iiE4jdMBvb/BFV3Yn5KEk5aolhC+KJst+ku0BGH+cGaaWm7aDKP/8EiJbRLNqgaz8NuV/i2/7LyrK2yPkLRnzsE+9gVhEp93G/i03mLIKwPSCsoVXqDPzkbClQG1x3pydztKLf0Wz37uplkeuhBvZYndUcVQNOLZMdokcKj0bhoguNZ0btNKd2c/FaMZkkK40ZHKHDn6wOEJDkkg/ZlRVbIOpMj8buZuCECYdeeL3MzzGY/boM2cJ8QSKhbyodQl3lpHd5Az0qxvbQvTK/LfbtokSIyankegVDtQVBpkEKBgFBkwI5pyYhmqw0MMreL3kMQUbEc7BkL6Q9+1tPzlGU5gGj98s5EUih8bLC1qexvvp9U9OwkVtZsv1BE1b3oekfUR3dXj5RZP9rPkjXM8aY+F/wWml3PY/A1fKYQv62Xm0jY+pHa1epq2MJT4ghkYjBvJhvPmuuAtn1JvrEB239eYDtNlqq14tZQd3hbvHvzpy6FSm3ruSCFEq0ADieOpecOHK4v62UrKC0l3JigEILfs3tWw=
+  file: app/build/outputs/apk/app-debug.apk
   skip_cleanup: true
   on:
     tags: true
     all_branches: true
-
-
 env:
   global:
   - secure: 0aFJFqoCI6fjNnXpngslln5KoEFWkz10JOyYX+6dsK0wlY1unM/RAsbzphz/sBhcFfZKvYxRAbGFFcs2fCuQ2NHW1Cjc32JZNdIwW66JpkwmoSnLC03iZ4c79d4TTCdhMF7klFlmmNzdwn8homHxsF8ATBmk4oMm5q09JjXamrEkD8bZDKwI2ku9eVajP0UVC8ykv8PVB3ZUKjf7iu3JJ+Z1uVrWOCGFN0XaNMFwykmW9tksRLE/izENwoMYAINFgbIMjsGtrEpJc3hjQMHVWI8NlEA1kHEJEKb3N3hegDhWm880ebB2BxqH/9MwAQakvUZurDQ3opjzO2Obdy98PQXCpwbDe6zINKN7Wkvg+h/gxt/If3voGrsK25FPkvUxZmMck+TjGivE25b5qD/jaOfiw2tiHCke6dMymsBguRGoZPSqT2CAfEwEJUw7vFZk/oqHvQ8OSgclvFm3PQFT1qGTA4U0nYEof2bkU3XkMlOJuGNAOMYjsxMj8inTQI/8LSMhi5RfdsZWeCYZuf4EMx6w5FLNJurVhoecOIhV/4dTQf1uzuF4fQKX8e/sAtAJ6rTdm9nxZNH+gVWhP7xnFi6MgCG8azYgLgUwiF3jv1yE/8D7JMyM1515MWiq0MMpAftFfnonV3cEQDoUDToe7xKnRWy6FG/DUz8ypgZh/hc=
