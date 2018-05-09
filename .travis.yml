@@ -20,9 +20,9 @@ after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testin
 before_deploy:
 - cp $TRAVIS_BUILD_DIR/KeyStore.jks $HOME
 # replace with your-apk-name leave release-unsigned.apk as it is
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/app/app-release -keystore $HOME/KeyStore.jks -storepass $storepass -keypass $keypass travis
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/app/release-unsigned.apk -keystore $HOME/travis.keystore -storepass $storepass -keypass $keypass travis
 # replace with your-apk-name leave release-unsigned.apk as it is
-- "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 $HOME/app/app-release.apk $HOME/app/TravisTestApk.apk"
+- "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 $HOME/app/release-unsigned.apk $HOME/app/TravisTestApk.apk"
 deploy:
   provider: releases
   api_key:
