@@ -20,14 +20,14 @@ after_failure: cat /home/users/anchit.makkar/AndroidStudioProjects/travis-testin
 before_deploy:
 - cp $TRAVIS_BUILD_DIR/KeyStore.jks $HOME
 # replace with your-apk-name leave release-unsigned.apk as it is
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/app/app-release.apk -keystore $HOME/KeyStore.jks -storepass $storepass -keypass $keypass travis
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/app/app-release -keystore $HOME/KeyStore.jks -storepass $storepass -keypass $keypass travis
 # replace with your-apk-name leave release-unsigned.apk as it is
 - "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 $HOME/app/app-release.apk $HOME/app/TravisTestApk.apk"
 deploy:
   provider: releases
   api_key:
     secure: ZGJ+xHrpuzwNyzJQhxEIC9ft0PL5ipC4ga1Xndtf+jz3ZCJQ0e3byztMXStWBd3dcyBMY46mCORBRN3UUD8H4mALWYaW9ARQsv77IHtLUNXxCfRWJrwaxCBCADVzoTLgLCoJPOC/5v87NSlh19Jl47fTMVjrnaW88o9ie5qGE3orUXSuTpvdcVqhBo7P0blyOdYhkW71SE+EXGxmDPivU5uDJnZJ+I6H3Qc1XNpWPmnd5TOZL7moUcYwJoN0uMzmBayWZ4Ltv9jNbm4Uw2OkobN4SYbNsOznh82TGCsdMC2aFaNs6L4Uc//m16y50Jw0ZfNAPkHfKfCYkGgBsVkazFE6afSFHNqexg5y+0GNUU06f/VHlROKcNDRHM6jaHNSkH2OquL6oFLEYy6EN5iOIUyEhVPMz/fMzVid/6RuIdLbjBT2VNQCSScaVRCA1koO/Ekm32N4RIfA/dPdL0oEWnY9YErMKjMe7bCIbAFdd3ayRC+kaUp3wWZdAhsBq+Km5jVID1zoF85Pm2OjXftg/JRtqNsMkCoKPEU0uKgX7UtjHkJsLplEd1Fy1qFxy37aSe1urpQhxDP6DN5SzSML4hExuKdB2RhmyKnAGLZ0wHuyLa/4ngO91dXTNRiHgwc0OuqXMfOPrOwMa4QfwGriouWFF7Zjba7XRzx4T2sOjA0=
-  file: "$HOME/android/TravisTestApk.apk"
+  file: "$HOME/app/TravisTestApk.apk"
   skip_cleanup: true
   on:
     tags: true
